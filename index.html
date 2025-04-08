@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub Premium - Sua Loja Completa de Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003087;
+            --primary-light: #0056b3;
+            --secondary: #ff4747;
+            --secondary-dark: #e03e3e;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+            --gray-dark: #e0e0e0;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --pix-color: #32BCAD;
+            --nintendo: #e60012;
+            --xbox: #107c10;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gray);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: var(--light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            border: 1px solid var(--light);
+            color: var(--light);
+        }
+        
+        .register-btn {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 5%;
+            color: var(--light);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 71, 71, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Featured Sections */
+        .section {
+            padding: 4rem 5%;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.8rem;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .badge-discount {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
+        .badge-new {
+            background-color: var(--success);
+            color: var(--light);
+        }
+        
+        .badge-bestseller {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.8rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .product-platform {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .platform-ps {
+            background-color: var(--primary);
+        }
+        
+        .platform-xbox {
+            background-color: var(--xbox);
+        }
+        
+        .platform-nintendo {
+            background-color: var(--nintendo);
+        }
+        
+        .platform-pc {
+            background-color: #333;
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0.8rem 0;
+        }
+        
+        .product-old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+        
+        .btn-add-to-cart {
+            flex: 1;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-add-to-cart:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-wishlist {
+            width: 45px;
+            background-color: var(--gray-dark);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .btn-wishlist:hover {
+            background-color: #d5d5d5;
+            color: var(--secondary);
+        }
+        
+        /* Categories Section */
+        .categories {
+            background-color: var(--gray-dark);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-link {
+            color: var(--primary);
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .category-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--light);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            padding: 0 1.5rem;
+            background-color: var(--secondary);
+            color: var(--light);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-contact i {
+            margin-top: 3px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .payment-method {
+            width: 50px;
+            height: 30px;
+            background-color: var(--light);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.2rem;
+        }
+        
+        .payment-method img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: var(--light);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.4s ease;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #666;
+            transition: all 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            background-color: var(--gray-dark);
+            color: var(--dark);
+        }
+        
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+        
+        .modal-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        /* Cart Items */
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--gray-dark);
+            align-items: center;
+        }
+        
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .cart-item-platform {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--gray-dark);
+            border-radius: 4px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: var(--gray);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid var(--gray-dark);
+            border-right: 1px solid var(--gray-dark);
+        }
+        
+        .cart-item-remove {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item-remove:hover {
+            color: var(--secondary-dark);
+        }
+        
+        .cart-summary {
+            background-color: var(--gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-top: 1px solid var(--gray-dark);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            display: none;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* PIX Payment */
+        .pix-payment {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pix-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .pix-header h3 {
+            font-size: 1.5rem;
+            color: var(--pix-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pix-header p {
+            color: #666;
+        }
+        
+        .pix-timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary);
+            text-align: center;
+            margin: 1.5rem 0;
+            background-color: rgba(255, 71, 71, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+        
+        .pix-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .pix-qrcode-container {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .pix-qrcode {
+            width: 250px;
+            height: 250px;
+            border: 1px solid var(--gray-dark);
+            border-radius: 10px;
+            padding: 1.5rem;
+            background-color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pix-qrcode img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .btn-copy-qrcode {
+            background-color: var(--pix-color);
+            color: var(--light);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-copy-qrcode:hover {
+            background-color: #2aa89a;
+            transform: translateY(-2px);
+        }
+        
+        .pix-instructions {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .pix-instructions h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .pix-steps {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pix-steps li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .pix-steps li::before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--pix-color);
+            color: var(--light);
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-modal h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .success-modal p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .order-details {
+            background-color: var(--gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        
+        .order-details h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .order-details p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(50px);
+            }
+            to { 
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+            
+            .section {
+                padding: 3rem 5%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 4rem 5%;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .pix-content {
+                flex-direction: column;
+            }
+            
+            .pix-instructions {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .product-card {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cart-item-image {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/1280px-PlayStation_logo.svg.png" alt="GameHub Logo">
+            <h1>GameHub Premium</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#games">Jogos</a></li>
+                <li><a href="#consoles">Consoles</a></li>
+                <li><a href="#accessories">Acessórios</a></li>
+                <li><a href="#offers">Ofertas</a></li>
+                <li><a href="#support">Suporte</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="user-actions">
+                <a href="#login" class="auth-btn login-btn">Entrar</a>
+                <a href="#register" class="auth-btn register-btn">Cadastrar</a>
+            </div>
+            <div class="cart-icon">
+                <a href="#" id="open-cart"><i class="fas fa-shopping-cart"></i></a>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Os melhores jogos e consoles para todas as plataformas</h2>
+            <p>Encontre os lançamentos mais aguardados, clássicos inesquecíveis e todos os consoles em um só lugar. Frete grátis para todo Brasil em compras acima de R$ 299.</p>
+            <div class="hero-btns">
+                <a href="#games" class="btn btn-primary">Explorar Jogos</a>
+                <a href="#consoles" class="btn btn-outline">Ver Consoles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Games -->
+    <section class="section" id="games">
+        <h2 class="section-title">Jogos em Destaque</h2>
+        <div class="products-grid">
+            <!-- Game 1 -->
+            <div class="product-card">
+                <div class="product-badge badge-discount">-15%</div>
+                <div class="product-image">
+                    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/niMUubpU6N7zksycNkSSZJxG.jpg" alt="Spider-Man 2">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Marvel's Spider-Man 2</h3>
+                    <span class="product-platform platform-ps">PS5</span>
+                    <div class="product-price">R$ 349,90 <span class="product-old-price">R$ 399,90</span></div>
+                    <p class="product-description">Os Spider-Mans Peter Parker e Miles Morales enfrentam o maior desafio de suas vidas em uma aventura épica.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="1" data-name="Marvel's Spider-Man 2" data-price="349.90" data-platform="PS5">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game 2 -->
+            <div class="product-card">
+                <div class="product-badge badge-new">Novo</div>
+                <div class="product-image">
+                    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202011/1020/TJvYwUfmdMx3QZJ27OYbMKLZ.jpg" alt="God of War Ragnarök">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">God of War Ragnarök</h3>
+                    <span class="product-platform platform-ps">PS5 | PS4</span>
+                    <div class="product-price">R$ 299,90</div>
+                    <p class="product-description">Kratos e Atreus embarcam em uma jornada mítica em busca de respostas e preparação para o Ragnarök.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="2" data-name="God of War Ragnarök" data-price="299.90" data-platform="PS5 | PS4">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/eEczyEMGd8J9JSX9oMeyYPDR.jpg" alt="The Last of Us Part I">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">The Last of Us Part I</h3>
+                    <span class="product-platform platform-ps">PS5</span>
+                    <div class="product-price">R$ 249,90</div>
+                    <p class="product-description">A emocionante jornada de Joel e Ellie refeita para a nova geração com gráficos impressionantes.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="3" data-name="The Last of Us Part I" data-price="249.90" data-platform="PS5">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game 4 -->
+            <div class="product-card">
+                <div class="product-badge badge-discount">-20%</div>
+                <div class="product-image">
+                    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202008/1420/HcLcfeQBXd7i2yVCxG3j7d3T.png" alt="Ghost of Tsushima">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Ghost of Tsushima</h3>
+                    <span class="product-platform platform-ps">PS5 | PS4</span>
+                    <div class="product-price">R$ 199,90 <span class="product-old-price">R$ 249,90</span></div>
+                    <p class="product-description">Um samurai se torna o lendário Guerreiro Fantasma de Tsushima em uma batalha para libertar sua terra natal.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="4" data-name="Ghost of Tsushima" data-price="199.90" data-platform="PS5 | PS4">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 5 - Nintendo -->
+            <div class="product-card">
+                <div class="product-badge badge-bestseller">Mais Vendido</div>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81aJ-R4E6gL._AC_UF1000,1000_QL80_.jpg" alt="The Legend of Zelda: Tears of the Kingdom">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">The Legend of Zelda: Tears of the Kingdom</h3>
+                    <span class="product-platform platform-nintendo">Nintendo Switch</span>
+                    <div class="product-price">R$ 349,90</div>
+                    <p class="product-description">A sequência altamente esperada de Breath of the Wild, com novos poderes e um mundo expandido para explorar.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="5" data-name="The Legend of Zelda: Tears of the Kingdom" data-price="349.90" data-platform="Nintendo Switch">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 6 - Xbox -->
+            <div class="product-card">
+                <div class="product-badge badge-new">Lançamento</div>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/91JJ5+3+XQL._AC_UF1000,1000_QL80_.jpg" alt="Starfield">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Starfield</h3>
+                    <span class="product-platform platform-xbox">Xbox Series X|S</span>
+                    <div class="product-price">R$ 299,90</div>
+                    <p class="product-description">O novo RPG espacial da Bethesda, com exploração de planetas e uma narrativa épica.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="6" data-name="Starfield" data-price="299.90" data-platform="Xbox Series X|S">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 7 - PC -->
+            <div class="product-card">
+                <div class="product-badge badge-discount">-25%</div>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/91d7JX+1KbL._AC_UF1000,1000_QL80_.jpg" alt="Baldur's Gate 3">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Baldur's Gate 3</h3>
+                    <span class="product-platform platform-pc">PC</span>
+                    <div class="product-price">R$ 224,90 <span class="product-old-price">R$ 299,90</span></div>
+                    <p class="product-description">RPG épico baseado em D&D com narrativa profunda e combate tático.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="7" data-name="Baldur's Gate 3" data-price="224.90" data-platform="PC">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 8 - Multiplataforma -->
+            <div class="product-card">
+                <div class="product-badge badge-bestseller">Mais Vendido</div>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81KP9RkLL2L._AC_UF1000,1000_QL80_.jpg" alt="Hogwarts Legacy">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Hogwarts Legacy</h3>
+                    <span class="product-platform platform-ps">PS5 | Xbox | PC</span>
+                    <div class="product-price">R$ 279,90</div>
+                    <p class="product-description">Explore Hogwarts no século XIX em um RPG de mundo aberto no universo de Harry Potter.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="8" data-name="Hogwarts Legacy" data-price="279.90" data-platform="PS5 | Xbox | PC">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Consoles -->
+    <section class="section" id="consoles">
+        <h2 class="section-title">Consoles em Destaque</h2>
+        <div class="products-grid">
+            <!-- Console 1 -->
+            <div class="product-card">
+                <div class="product-badge badge-bestseller">Mais Vendido</div>
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/238671/console-sony-playstation-5_1634132555_gg.jpg" alt="PlayStation 5">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PlayStation 5</h3>
+                    <span class="product-platform platform-ps">Console</span>
+                    <div class="product-price">R$ 4.499,90</div>
+                    <p class="product-description">Console PlayStation 5 com leitor de disco e 1 controle DualSense. Experimente a nova geração de jogos.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="9" data-name="PlayStation 5" data-price="4499.90" data-platform="Console">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Console 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/238672/console-sony-playstation-5-digital-edition_1634132556_gg.jpg" alt="PlayStation 5 Digital">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PlayStation 5 Digital Edition</h3>
+                    <span class="product-platform platform-ps">Console</span>
+                    <div class="product-price">R$ 4.199,90</div>
+                    <p class="product-description">Console PlayStation 5 edição digital sem leitor de disco. Toda a potência da nova geração.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="10" data-name="PlayStation 5 Digital Edition" data-price="4199.90" data-platform="Console">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Console 3 - Xbox -->
+            <div class="product-card">
+                <div class="product-badge badge-discount">-10%</div>
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/155193/console-microsoft-xbox-series-x-1tb_1603488210_gg.jpg" alt="Xbox Series X">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Xbox Series X</h3>
+                    <span class="product-platform platform-xbox">Console</span>
+                    <div class="product-price">R$ 4.049,90 <span class="product-old-price">R$ 4.499,90</span></div>
+                    <p class="product-description">O console mais poderoso da Microsoft com suporte a 4K, 120 FPS e Ray Tracing.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="11" data-name="Xbox Series X" data-price="4049.90" data-platform="Console">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Console 4 - Nintendo -->
+            <div class="product-card">
+                <div class="product-badge badge-new">Nova Versão</div>
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/128584/console-nintendo-switch-oled-model-joy-con-cinza_1632840938_gg.jpg" alt="Nintendo Switch OLED">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Nintendo Switch OLED</h3>
+                    <span class="product-platform platform-nintendo">Console</span>
+                    <div class="product-price">R$ 2.799,90</div>
+                    <p class="product-description">Console com tela OLED de 7 polegadas, melhor som e suporte ajustável.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="12" data-name="Nintendo Switch OLED" data-price="2799.90" data-platform="Console">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Accessories -->
+    <section class="section" id="accessories">
+        <h2 class="section-title">Acessórios em Destaque</h2>
+        <div class="products-grid">
+            <!-- Accessory 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/238673/controle-sem-fio-dualsense-ps5-branco_1634132557_gg.jpg" alt="Controle DualSense">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Controle DualSense PS5</h3>
+                    <span class="product-platform platform-ps">Acessório</span>
+                    <div class="product-price">R$ 499,90</div>
+                    <p class="product-description">Controle sem fio DualSense para PlayStation 5 - Branco. Tecnologia de feedback háptico avançado.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="13" data-name="Controle DualSense PS5" data-price="499.90" data-platform="Acessório">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessory 2 -->
+            <div class="product-card">
+                <div class="product-badge badge-new">Novo</div>
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/115738/controle-sem-fio-dualshock-ps4-azul-aco_1564670401_gg.jpg" alt="Controle DualShock 4">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Controle DualShock 4 PS4</h3>
+                    <span class="product-platform platform-ps">Acessório</span>
+                    <div class="product-price">R$ 399,90</div>
+                    <p class="product-description">Controle sem fio DualShock 4 para PlayStation 4 - Azul Aço. Design ergonômico e preciso.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="14" data-name="Controle DualShock 4 PS4" data-price="399.90" data-platform="Acessório">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessory 3 - Xbox -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/155194/controle-sem-fio-xbox-series-x-s-preto_1603488211_gg.jpg" alt="Controle Xbox Series X">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Controle Xbox Series X|S</h3>
+                    <span class="product-platform platform-xbox">Acessório</span>
+                    <div class="product-price">R$ 459,90</div>
+                    <p class="product-description">Controle sem fio para Xbox Series X|S com design ergonômico e conexão Bluetooth.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="15" data-name="Controle Xbox Series X|S" data-price="459.90" data-platform="Acessório">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessory 4 - Nintendo -->
+            <div class="product-card">
+                <div class="product-badge badge-bestseller">Mais Vendido</div>
+                <div class="product-image">
+                    <img src="https://images.kabum.com.br/produtos/fotos/128585/controle-nintendo-switch-pro_1632840939_gg.jpg" alt="Controle Pro Nintendo Switch">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Controle Pro Nintendo Switch</h3>
+                    <span class="product-platform platform-nintendo">Acessório</span>
+                    <div class="product-price">R$ 549,90</div>
+                    <p class="product-description">Controle profissional com design ergonômico, vibração HD e motion controls.</p>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" data-id="16" data-name="Controle Pro Nintendo Switch" data-price="549.90" data-platform="Acessório">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section categories">
+        <h2 class="section-title">Categorias</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                <h3 class="category-title">Consoles</h3>
+                <p>PS5, Xbox, Nintendo e mais</p>
+                <a href="#consoles" class="category-link">Ver todos <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fas fa-compact-disc"></i></div>
+                <h3 class="category-title">Jogos</h3>
+                <p>Lançamentos e clássicos</p>
+                <a href="#games" class="category-link">Explorar <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fas fa-headphones"></i></div>
+                <h3 class="category-title">Acessórios</h3>
+                <p>Controles, headsets e mais</p>
+                <a href="#accessories" class="category-link">Ver todos <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fas fa-gift"></i></div>
+                <h3 class="category-title">Gift Cards</h3>
+                <p>PSN, Xbox Live e Nintendo</p>
+                <a href="#giftcards" class="category-link">Comprar <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="category-card">
+                <div class="category-icon"><i class="fas fa-crown"></i></div>
+                <h3 class="category-title">Assinaturas</h3>
+                <p>PS Plus, Game Pass, Switch Online</p>
+                <a href="#subscriptions" class="category-link">Assinar <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Assine nossa newsletter</h2>
+        <p>Receba as últimas novidades, promoções exclusivas e descontos especiais diretamente no seu e-mail.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+            <button type="submit" class="newsletter-btn">Assinar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Sobre Nós</h3>
+                <ul>
+                    <li><a href="#">Nossa História</a></li>
+                    <li><a href="#">Missão e Valores</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ajuda</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Entregas</a></li>
+                    <li><a href="#">Devoluções</a></li>
+                    <li><a href="#">Pagamentos</a></li>
+                    <li><a href="#">Rastrear Pedido</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@gamehub.com</li>
+                    <li><i class="fas fa-phone"></i> (11) 1234-5678</li>
+                    <li><i class="fab fa-whatsapp"></i> (11) 98765-4321</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Rua dos Games, 123 - São Paulo, SP</li>
+                    <li><i class="fas fa-clock"></i> Seg-Sex: 9h-18h | Sáb: 9h-13h</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Redes Sociais</h3>
+                <p>Siga-nos nas redes sociais para ficar por dentro de todas as novidades.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <h3 style="margin-top: 2rem;">Pagamento</h3>
+                <div class="payment-methods">
+                    <div class="payment-method"><img src="https://logodownload.org/wp-content/uploads/2020/09/pix-banco-central-logo-3.png" alt="PIX"></div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 GameHub Premium - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-cart"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Seu Carrinho</h2>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cart-items">
+                    <p class="empty-cart-message">Seu carrinho está vazio.</p>
+                </div>
+                
+                <div class="cart-summary" id="cart-summary" style="display: none;">
+                    <div class="cart-summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>Frete:</span>
+                        <span id="cart-shipping">Grátis</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>Desconto:</span>
+                        <span id="cart-discount">- R$ 0,00</span>
+                    </div>
+                    <div class="cart-summary-row cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total">R$ 0,00</span>
+                    </div>
+                </div>
+                
+                <!-- Payment Section -->
+                <div class="payment-section" id="payment-section">
+                    <h3>Pagamento via PIX</h3>
+                    <div class="pix-payment">
+                        <div class="pix-header">
+                            <h3>Pagamento via PIX</h3>
+                            <p>Pague com PIX e tenha seu pedido processado instantaneamente</p>
+                        </div>
+                        
+                        <div class="pix-timer" id="pix-timer">
+                            <i class="fas fa-clock"></i> Tempo restante: 29:59
+                        </div>
+                        
+                        <div class="pix-content">
+                            <div class="pix-qrcode-container">
+                                <div class="pix-qrcode">
+                                    <img src="https://cdn.discordapp.com/attachments/1277091375589888150/1357472035600728134/image.png?ex=67f64299&is=67f4f119&hm=5a288af6b5b21a58303aa5f7716cf2dca4f41d9d223499866a160d2d48e9c5ea&" alt="QRCode PIX">
+                                </div>
+                                <button class="btn-copy-qrcode" id="copy-qrcode">
+                                    <i class="fas fa-camera"></i> Capturar QR Code
+                                </button>
+                            </div>
+                            
+                            <div class="pix-instructions">
+                                <h4>Como pagar com PIX:</h4>
+                                <ol class="pix-steps">
+                                    <li>Abra o aplicativo do seu banco ou carteira digital</li>
+                                    <li>Selecione a opção PIX e depois "Pagar com QR Code"</li>
+                                    <li>Aponte a câmera para o QR Code acima</li>
+                                    <li>Confira os dados e confirme o pagamento</li>
+                                    <li>Seu pedido será liberado automaticamente após a confirmação</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary checkout-btn" id="checkout-btn">
+                    <i class="fas fa-shopping-cart"></i> Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="success-modal">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Compra realizada com sucesso!</h2>
+                <p>Obrigado por comprar na GameHub Premium. Seu pedido foi processado e você receberá um e-mail com todos os detalhes.</p>
+                
+                <div class="order-details">
+                    <h4>Detalhes do Pedido</h4>
+                    <p><strong>Número do Pedido:</strong> #GH20230001</p>
+                    <p><strong>Data:</strong> 01/01/2023</p>
+                    <p><strong>Método de Pagamento:</strong> PIX</p>
+                    <p><strong>Total:</strong> R$ 0,00</p>
+                    <p><strong>Status:</strong> Pagamento confirmado</p>
+                </div>
+                
+                <button class="btn btn-primary" id="continue-shopping" style="width: auto; padding: 0.8rem 2rem;">
+                    <i class="fas fa-shopping-bag"></i> Continuar Comprando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carrinho de Compras Avançado
+        let cart = [];
+        let paymentTimer;
+        
+        // Elementos do DOM
+        const openCartBtn = document.getElementById('open-cart');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartModal = document.getElementById('cart-modal');
+        const successModal = document.getElementById('success-modal');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartSummary = document.getElementById('cart-summary');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartShipping = document.getElementById('cart-shipping');
+        const cartDiscount = document.getElementById('cart-discount');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCountElement = document.querySelector('.cart-count');
+        const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const paymentSection = document.getElementById('payment-section');
+        const copyQrCodeBtn = document.getElementById('copy-qrcode');
+        const pixTimer = document.getElementById('pix-timer');
+        const continueShoppingBtn = document.getElementById('continue-shopping');
+        
+        // Abrir modal do carrinho
+        openCartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartModal.style.display = 'flex';
+            updateCartDisplay();
+            paymentSection.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Fechar modais
+        function closeAllModals() {
+            cartModal.style.display = 'none';
+            successModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeCartBtn.addEventListener('click', closeAllModals);
+        continueShoppingBtn.addEventListener('click', closeAllModals);
+        
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal || e.target === successModal) {
+                closeAllModals();
+            }
+        });
+        
+        // Adicionar item ao carrinho
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                const platform = button.getAttribute('data-platform');
+                const image = button.closest('.product-card').querySelector('.product-image img').src;
+                
+                // Verificar se o item já está no carrinho
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        platform,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCartCount();
+                showAddedToCartMessage(name);
+            });
+        });
+        
+        // Atualizar contador do carrinho
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+        
+        // Atualizar exibição do carrinho
+        function updateCartDisplay() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
+                cartSummary.style.display = 'none';
+                checkoutBtn.textContent = 'Finalizar Compra';
+                checkoutBtn.style.display = 'block';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <div class="cart-item-platform">${item.platform}</div>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2)}</div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                                <button class="cart-item-remove" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Remover
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = itemsHTML;
+            
+            // Calcular valores
+            const shipping = subtotal > 299 ? 0 : 25;
+            const discount = subtotal > 1000 ? subtotal * 0.1 : 0; // 10% de desconto para compras acima de R$ 1000
+            const total = subtotal + shipping - discount;
+            
+            // Atualizar resumo
+            cartSubtotal.textContent = `R$ ${subtotal.toFixed(2)}`;
+            cartShipping.textContent = shipping === 0 ? 'Grátis' : `R$ ${shipping.toFixed(2)}`;
+            cartDiscount.textContent = discount === 0 ? '- R$ 0,00' : `- R$ ${discount.toFixed(2)}`;
+            cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+            
+            cartSummary.style.display = 'block';
+            checkoutBtn.textContent = 'Finalizar Compra';
+            checkoutBtn.style.display = 'block';
+            
+            // Adicionar eventos
+            addCartItemEvents();
+        }
+        
+        // Adicionar eventos aos itens do carrinho
+        function addCartItemEvents() {
+            // Botões de quantidade
+            document.querySelectorAll('.quantity-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    const input = e.target.closest('.quantity-control').querySelector('.quantity-input');
+                    
+                    if (e.target.classList.contains('plus')) {
+                        item.quantity += 1;
+                    } else if (e.target.classList.contains('minus') && item.quantity > 1) {
+                        item.quantity -= 1;
+                    }
+                    
+                    input.value = item.quantity;
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+            
+            // Input de quantidade
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    const value = parseInt(e.target.value) || 1;
+                    
+                    item.quantity = value < 1 ? 1 : value;
+                    e.target.value = item.quantity;
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+            
+            // Remover item
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    removeFromCart(id);
+                });
+            });
+        }
+        
+        // Remover item do carrinho
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartCount();
+            updateCartDisplay();
+        }
+        
+        // Mostrar mensagem de item adicionado
+        function showAddedToCartMessage(name) {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="font-size: 1.5rem;"></i>
+                    <div>
+                        <strong>${name}</strong> foi adicionado ao carrinho!
+                    </div>
+                </div>
+            `;
+            
+            message.style.position = 'fixed';
+            message.style.bottom = '30px';
+            message.style.right = '30px';
+            message.style.backgroundColor = 'var(--success)';
+            message.style.color = 'var(--light)';
+            message.style.padding = '15px 20px';
+            message.style.borderRadius = '8px';
+            message.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            message.style.zIndex = '2000';
+            message.style.animation = 'fadeInUp 0.5s ease';
+            message.style.maxWidth = '350px';
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.style.animation = 'fadeOut 0.5s ease';
+                setTimeout(() => message.remove(), 500);
+            }, 3000);
+        }
+        
+        // Finalizar compra
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            
+            if (checkoutBtn.textContent === 'Finalizar Compra') {
+                // Mostrar opções de pagamento
+                paymentSection.style.display = 'block';
+                checkoutBtn.textContent = 'Confirmar Pagamento';
+                
+                // Iniciar contador regressivo para PIX
+                startPaymentTimer();
+                
+                // Rolagem para a seção de pagamento
+                setTimeout(() => {
+                    paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            } else {
+                // Confirmar pagamento (simulação)
+                confirmPayment();
+            }
+        });
+        
+        // Copiar QR Code (simulação)
+        copyQrCodeBtn.addEventListener('click', () => {
+            showToast('QR Code copiado para a área de transferência!');
+        });
+        
+        // Iniciar timer de pagamento
+        function startPaymentTimer() {
+            let minutes = 29;
+            let seconds = 59;
+            
+            clearInterval(paymentTimer);
+            
+            paymentTimer = setInterval(() => {
+                pixTimer.innerHTML = `<i class="fas fa-clock"></i> Tempo restante: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(paymentTimer);
+                        pixTimer.innerHTML = `<i class="fas fa-exclamation-circle"></i> Tempo esgotado!`;
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+            }, 1000);
+        }
+        
+        // Confirmar pagamento
+        function confirmPayment() {
+            // Simular processamento
+            checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+            checkoutBtn.disabled = true;
+            
+            // Simular atraso no processamento
+            setTimeout(() => {
+                // Mostrar modal de sucesso
+                cartModal.style.display = 'none';
+                successModal.style.display = 'flex';
+                
+                // Limpar carrinho
+                cart = [];
+                updateCartCount();
+                
+                // Resetar botão
+                checkoutBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Finalizar Compra';
+                checkoutBtn.disabled = false;
+                
+                // Parar timer se estiver ativo
+                clearInterval(paymentTimer);
+            }, 2000);
+        }
+        
+        // Mostrar toast message
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '30px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = 'var(--dark)';
+            toast.style.color = 'var(--light)';
+            toast.style.padding = '12px 20px';
+            toast.style.borderRadius = '4px';
+            toast.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+            toast.style.zIndex = '2000';
+            toast.style.animation = 'fadeInUp 0.3s ease';
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Adicionar animações CSS dinamicamente
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+            
+            @keyframes fadeInUp {
+                from { 
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes slideUp {
+                from { 
+                    transform: translateY(50px);
+                }
+                to { 
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
