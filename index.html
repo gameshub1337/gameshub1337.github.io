@@ -786,6 +786,85 @@
             font-size: 1.1rem;
         }
         
+        /* Address Section */
+        .address-section {
+            display: none;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .address-form {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .address-form h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--gray-dark);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 48, 135, 0.1);
+        }
+
+        .btn-save-address {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-save-address:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
         /* Payment Section */
         .payment-section {
             display: none;
@@ -967,6 +1046,26 @@
             font-size: 0.95rem;
         }
         
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -1041,6 +1140,11 @@
             
             .pix-instructions {
                 width: 100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
         
@@ -1616,6 +1720,89 @@
                     </div>
                 </div>
                 
+                <!-- Address Section -->
+                <div class="address-section" id="address-section">
+                    <div class="address-form">
+                        <h3>Informações de Entrega</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="full-name" class="form-label">Nome Completo*</label>
+                                <input type="text" id="full-name" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cep" class="form-label">CEP*</label>
+                                <input type="text" id="cep" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Telefone*</label>
+                                <input type="tel" id="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Endereço*</label>
+                            <input type="text" id="address" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="number" class="form-label">Número*</label>
+                                <input type="text" id="number" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="complement" class="form-label">Complemento</label>
+                                <input type="text" id="complement" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="neighborhood" class="form-label">Bairro*</label>
+                                <input type="text" id="neighborhood" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="form-label">Cidade*</label>
+                                <input type="text" id="city" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="state" class="form-label">Estado*</label>
+                            <select id="state" class="form-input" required>
+                                <option value="">Selecione</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        <button class="btn-save-address" id="save-address">
+                            <i class="fas fa-save"></i> Salvar Endereço e Continuar
+                        </button>
+                    </div>
+                </div>
+                
                 <!-- Payment Section -->
                 <div class="payment-section" id="payment-section">
                     <h3>Pagamento via PIX</h3>
@@ -1672,12 +1859,16 @@
                 
                 <div class="order-details">
                     <h4>Detalhes do Pedido</h4>
-                    <p><strong>Número do Pedido:</strong> #GH20230001</p>
-                    <p><strong>Data:</strong> 01/01/2023</p>
+                    <p><strong>Número do Pedido:</strong> <span id="order-number">#GH20230001</span></p>
+                    <p><strong>Data:</strong> <span id="order-date">01/01/2023</span></p>
                     <p><strong>Método de Pagamento:</strong> PIX</p>
-                    <p><strong>Total:</strong> R$ 0,00</p>
+                    <p><strong>Total:</strong> <span id="order-total">R$ 0,00</span></p>
                     <p><strong>Status:</strong> Pagamento confirmado</p>
                 </div>
+                
+                <a href="#" class="whatsapp-btn" id="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Confirmar Pedido via WhatsApp
+                </a>
                 
                 <button class="btn btn-primary" id="continue-shopping" style="width: auto; padding: 0.8rem 2rem;">
                     <i class="fas fa-shopping-bag"></i> Continuar Comprando
@@ -1690,6 +1881,8 @@
         // Carrinho de Compras Avançado
         let cart = [];
         let paymentTimer;
+        let currentOrder = null;
+        let customerAddress = null;
         
         // Elementos do DOM
         const openCartBtn = document.getElementById('open-cart');
@@ -1705,17 +1898,37 @@
         const cartCountElement = document.querySelector('.cart-count');
         const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
         const checkoutBtn = document.getElementById('checkout-btn');
+        const addressSection = document.getElementById('address-section');
         const paymentSection = document.getElementById('payment-section');
+        const saveAddressBtn = document.getElementById('save-address');
         const copyQrCodeBtn = document.getElementById('copy-qrcode');
         const pixTimer = document.getElementById('pix-timer');
         const continueShoppingBtn = document.getElementById('continue-shopping');
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        const orderNumberElement = document.getElementById('order-number');
+        const orderDateElement = document.getElementById('order-date');
+        const orderTotalElement = document.getElementById('order-total');
         
+        // Elementos do formulário de endereço
+        const fullNameInput = document.getElementById('full-name');
+        const cepInput = document.getElementById('cep');
+        const phoneInput = document.getElementById('phone');
+        const addressInput = document.getElementById('address');
+        const numberInput = document.getElementById('number');
+        const complementInput = document.getElementById('complement');
+        const neighborhoodInput = document.getElementById('neighborhood');
+        const cityInput = document.getElementById('city');
+        const stateInput = document.getElementById('state');
+
         // Abrir modal do carrinho
         openCartBtn.addEventListener('click', (e) => {
             e.preventDefault();
             cartModal.style.display = 'flex';
             updateCartDisplay();
+            addressSection.style.display = 'none';
             paymentSection.style.display = 'none';
+            checkoutBtn.style.display = 'block';
+            checkoutBtn.textContent = 'Finalizar Compra';
             document.body.style.overflow = 'hidden';
         });
         
@@ -1920,23 +2133,58 @@
             if (cart.length === 0) return;
             
             if (checkoutBtn.textContent === 'Finalizar Compra') {
-                // Mostrar opções de pagamento
-                paymentSection.style.display = 'block';
-                checkoutBtn.textContent = 'Confirmar Pagamento';
+                // Mostrar seção de endereço primeiro
+                addressSection.style.display = 'block';
+                checkoutBtn.style.display = 'none';
                 
-                // Iniciar contador regressivo para PIX
-                startPaymentTimer();
-                
-                // Rolagem para a seção de pagamento
+                // Rolagem para a seção de endereço
                 setTimeout(() => {
-                    paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    addressSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 300);
-            } else {
+            } else if (checkoutBtn.textContent === 'Confirmar Pagamento') {
                 // Confirmar pagamento (simulação)
                 confirmPayment();
             }
         });
-        
+
+        // Salvar endereço e continuar para pagamento
+        saveAddressBtn.addEventListener('click', () => {
+            // Validar campos obrigatórios
+            if (!fullNameInput.value || !cepInput.value || !phoneInput.value || 
+                !addressInput.value || !numberInput.value || 
+                !neighborhoodInput.value || !cityInput.value || !stateInput.value) {
+                showToast('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+            
+            // Salvar endereço do cliente
+            customerAddress = {
+                fullName: fullNameInput.value,
+                cep: cepInput.value,
+                phone: phoneInput.value,
+                address: addressInput.value,
+                number: numberInput.value,
+                complement: complementInput.value,
+                neighborhood: neighborhoodInput.value,
+                city: cityInput.value,
+                state: stateInput.value
+            };
+            
+            // Esconder seção de endereço e mostrar pagamento
+            addressSection.style.display = 'none';
+            paymentSection.style.display = 'block';
+            checkoutBtn.textContent = 'Confirmar Pagamento';
+            checkoutBtn.style.display = 'block';
+            
+            // Iniciar contador regressivo para PIX
+            startPaymentTimer();
+            
+            // Rolagem para a seção de pagamento
+            setTimeout(() => {
+                paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        });
+
         // Copiar QR Code (simulação)
         copyQrCodeBtn.addEventListener('click', () => {
             showToast('QR Code copiado para a área de transferência!');
@@ -1966,11 +2214,63 @@
             }, 1000);
         }
         
+        // Gerar número de pedido aleatório
+        function generateOrderNumber() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const randomLetters = letters.charAt(Math.floor(Math.random() * letters.length)) + 
+                                letters.charAt(Math.floor(Math.random() * letters.length));
+            const randomNumbers = Math.floor(1000 + Math.random() * 9000);
+            return `#GH${randomLetters}${randomNumbers}`;
+        }
+        
+        // Formatar data atual
+        function getCurrentDate() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+        
         // Confirmar pagamento
         function confirmPayment() {
             // Simular processamento
             checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
             checkoutBtn.disabled = true;
+            
+            // Calcular total
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const shipping = subtotal > 299 ? 0 : 25;
+            const discount = subtotal > 1000 ? subtotal * 0.1 : 0;
+            const total = subtotal + shipping - discount;
+            
+            // Criar objeto de pedido
+            currentOrder = {
+                number: generateOrderNumber(),
+                date: getCurrentDate(),
+                items: [...cart],
+                subtotal,
+                shipping,
+                discount,
+                total,
+                address: customerAddress
+            };
+            
+            // Atualizar informações no modal de sucesso
+            orderNumberElement.textContent = currentOrder.number;
+            orderDateElement.textContent = currentOrder.date;
+            orderTotalElement.textContent = `R$ ${total.toFixed(2)}`;
+            
+            // Configurar link do WhatsApp
+            const productsList = currentOrder.items.map(item => 
+                `${item.name} (${item.platform}) - ${item.quantity}x R$ ${item.price.toFixed(2)}`
+            ).join('%0A- ');
+            
+            const addressText = `*Endereço de Entrega:*%0A${customerAddress.fullName}%0A${customerAddress.address}, ${customerAddress.number}${customerAddress.complement ? ', ' + customerAddress.complement : ''}%0A${customerAddress.neighborhood}%0A${customerAddress.city}/${customerAddress.state}%0ACEP: ${customerAddress.cep}%0ATelefone: ${customerAddress.phone}`;
+            
+            const whatsappMessage = `Olá, acabei de realizar a compra na GameHub Premium!%0A%0A*Número do Pedido:* ${currentOrder.number}%0A*Valor Total:* R$ ${total.toFixed(2)}%0A%0A*Itens Comprados:*%0A- ${productsList}%0A%0A${addressText}%0A%0APor favor, confirme meu pedido!`;
+            
+            whatsappBtn.href = `https://wa.me/+557191829433?text=${encodeURIComponent(whatsappMessage)}`;
             
             // Simular atraso no processamento
             setTimeout(() => {
